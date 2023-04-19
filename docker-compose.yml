@@ -1,7 +1,40 @@
-version: '3.8'
-
 services:
   db:
-    build: .
+    container_name: postgres-library
+    image: postgres
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
     ports:
       - "5432:5432"
+    networks:
+      - postgres-library
+    restart: unless-stopped
+  pgadmin:
+    container_name: pgadmin-library
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    networks:
+      - postgres-library
+    restart: unless-stopped
+    depends_on:
+      - db
+
+networks:
+  postgres-library:
+    driver: bridge
+
+volumes:
+  postgres:
+  pgadmin:
