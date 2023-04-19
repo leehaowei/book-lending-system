@@ -35,5 +35,24 @@ public class AppUser {
     // Constructors
     public AppUser() {
     }
+
+//    public AppUser(String phone_number, String password, String user_name) {
+//        this.phone_number = phone_number;
+//        this.password = password;
+//        this.user_name = user_name;
+//    }
+
+    public AppUser(String phone_number,
+                   String password,
+                   String user_name,
+                   LocalDateTime registration_time,
+                   LocalDateTime lastLogin_time) {
+
+        this.phone_number = phone_number;
+        this.password = password;
+        this.user_name = user_name;
+        this.registration_time = registration_time;
+        this.lastLogin_time = lastLogin_time;
+    }
 }
 

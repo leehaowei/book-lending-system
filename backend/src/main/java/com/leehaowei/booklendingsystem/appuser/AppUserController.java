@@ -24,5 +24,10 @@ public class AppUserController {
         return appUserService.getAllUsers();
     }
     // Additional CRUD endpoints
+    @PostMapping
+    public void registerUser(
+            @RequestBody UserRegistrationRequest request) {
+        appUserService.addUser(request);
+    }
 }
 

@@ -26,4 +26,9 @@ public class AppUserJPADataAccessService
 
         return userRepository.findById(id);
     }
+
+    @Override
+    public void insertUser(AppUser user) {
+        userRepository.save(user);
+    }
 }

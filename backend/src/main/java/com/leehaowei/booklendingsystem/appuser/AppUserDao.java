@@ -8,4 +8,6 @@ public interface AppUserDao {
     List<AppUser> selectAllUser();
     Optional<AppUser> selectCustomerById(Integer id);
 
+    void insertUser(AppUser user);
+
 }
