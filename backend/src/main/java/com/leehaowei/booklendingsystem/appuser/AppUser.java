@@ -59,6 +59,15 @@ public class AppUser implements UserDetails {
         this.userName = userName;
     }
 
+    public AppUser(Integer userId, String phoneNumber, String password, String userName, LocalDateTime registrationTime, LocalDateTime lastLoginTime) {
+        this.userId = userId;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.userName = userName;
+        this.registrationTime = registrationTime;
+        this.lastLoginTime = lastLoginTime;
+    }
+
     public Integer getUserId() {
         return this.userId;
     }

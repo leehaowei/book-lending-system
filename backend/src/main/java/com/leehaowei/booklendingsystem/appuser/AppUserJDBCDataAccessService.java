@@ -11,15 +11,23 @@ import java.util.Optional;
 public class AppUserJDBCDataAccessService implements AppUserDao {
 
     private final JdbcTemplate jdbcTemplate;
+    private final AppUserRowMapper userRowMapper;
 
-    public AppUserJDBCDataAccessService(JdbcTemplate jdbcTemplate) {
+    public AppUserJDBCDataAccessService(JdbcTemplate jdbcTemplate,
+                                        AppUserRowMapper userRowMapper) {
         this.jdbcTemplate = jdbcTemplate;
+        this.userRowMapper = userRowMapper;
     }
 
     @Override
     public List<AppUser> selectAllUser() {
+        var sql = """
+                SELECT user_id, phone_number, password, user_name,
+                       registration_time, last_login_time
+                FROM app_user
+                """;
 
-        return null;
+        return jdbcTemplate.query(sql, userRowMapper);
     }
 
     @Override
@@ -34,7 +42,7 @@ public class AppUserJDBCDataAccessService implements AppUserDao {
                 INSERT INTO app_user(phone_number, password, user_name)
                 VALUES (?, ?, ?)
                 """;
-        System.out.println("User object: " + user);
+//        System.out.println("User object: " + user);
 
         int result = jdbcTemplate.update(
                 sql,
