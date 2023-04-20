@@ -7,7 +7,7 @@ import java.util.Optional;
 
 @Repository("jpa-user")
 public class AppUserJPADataAccessService
-        implements AppUserDao{
+        implements AppUserDao {
 
     private final AppUserRepository userRepository;
 

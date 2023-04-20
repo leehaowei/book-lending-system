@@ -1,7 +1,5 @@
 package com.leehaowei.booklendingsystem.inventory;
 
-import com.leehaowei.booklendingsystem.appuser.AppUser;
-import com.leehaowei.booklendingsystem.appuser.AppUserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

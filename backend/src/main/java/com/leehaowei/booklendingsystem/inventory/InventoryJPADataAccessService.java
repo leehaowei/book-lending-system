@@ -1,7 +1,5 @@
 package com.leehaowei.booklendingsystem.inventory;
 
-import com.leehaowei.booklendingsystem.appuser.AppUser;
-import com.leehaowei.booklendingsystem.appuser.AppUserRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

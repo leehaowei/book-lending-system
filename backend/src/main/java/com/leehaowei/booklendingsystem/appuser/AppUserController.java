@@ -1,33 +1,40 @@
 package com.leehaowei.booklendingsystem.appuser;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import com.leehaowei.booklendingsystem.jwt.JWTUtil;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/app_users")
+@RequestMapping("api/users")
 public class AppUserController {
 
-    private final AppUserService appUserService;
+    private final AppUserService UserService;
+    private final JWTUtil jwtUtil;
 
-    public AppUserController(AppUserService appUserService) {
+    public AppUserController(AppUserService userService,
+                             JWTUtil jwtUtil) {
 
-        this.appUserService = appUserService;
+        this.UserService = userService;
+        this.jwtUtil = jwtUtil;
     }
 
     @GetMapping
     public List<AppUser> getAllAppUsers() {
 
-        return appUserService.getAllUsers();
+        return UserService.getAllUsers();
     }
     // Additional CRUD endpoints
     @PostMapping
-    public void registerUser(
-            @RequestBody UserRegistrationRequest request) {
-        appUserService.addUser(request);
+    public ResponseEntity<?> registerUser(
+            @RequestBody AppUserRegistrationRequest request) {
+        UserService.addUser(request);
+        String jwtToken = jwtUtil.issueToken(request.phone_number(), "ROLE_USER");
+        return ResponseEntity.ok()
+                .header(HttpHeaders.AUTHORIZATION, jwtToken)
+                .build();
     }
 }
 

@@ -14,7 +14,8 @@ spring:
     password: mypassword  # ${DB_PASSWORD}
   jpa:
     hibernate:
-      ddl-auto: create-drop
+#      ddl-auto: create-drop
+      ddl-auto: validate
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect

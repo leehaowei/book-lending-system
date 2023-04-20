@@ -1,6 +1,6 @@
 package com.leehaowei.booklendingsystem.appuser;
 
-public record UserRegistrationRequest(
+public record AppUserRegistrationRequest(
         String phone_number,
         String password,
         String user_name

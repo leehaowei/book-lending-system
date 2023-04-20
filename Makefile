@@ -1,5 +1,5 @@
 bootstrap-db:
-	docker-compose up
+	docker-compose up -d
 down:
 	docker-compose down --volumes
 connect-db:

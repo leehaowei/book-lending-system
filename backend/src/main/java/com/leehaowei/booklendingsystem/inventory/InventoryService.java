@@ -1,7 +1,5 @@
 package com.leehaowei.booklendingsystem.inventory;
 
-import com.leehaowei.booklendingsystem.appuser.AppUser;
-import com.leehaowei.booklendingsystem.appuser.AppUserDao;
 import com.leehaowei.booklendingsystem.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
