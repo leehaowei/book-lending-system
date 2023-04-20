@@ -69,15 +69,11 @@ public class AppUser implements UserDetails {
     }
 
     public Integer getUserId() {
-        return this.userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+        return userId;
     }
 
     public String getPhoneNumber() {
-        return this.phoneNumber;
+        return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
@@ -86,6 +82,10 @@ public class AppUser implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getUserName() {
+        return userName;
     }
 
     public void setUserName(String userName) {
@@ -118,9 +118,10 @@ public class AppUser implements UserDetails {
         return this.password;
     }
 
+    // getUsername is for authentication with  spring security
     @Override
     public String getUsername() {
-        return this.userName;
+        return this.phoneNumber;
     }
 
     @Override

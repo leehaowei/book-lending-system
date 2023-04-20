@@ -22,7 +22,7 @@ public class AppUserJPADataAccessService
     }
 
     @Override
-    public Optional<AppUser> selectCustomerById(Integer id) {
+    public Optional<AppUser> selectUserById(Integer id) {
 
         return userRepository.findById(id);
     }
@@ -30,5 +30,10 @@ public class AppUserJPADataAccessService
     @Override
     public void insertUser(AppUser user) {
         userRepository.save(user);
+    }
+
+    @Override
+    public Optional<AppUser> selectUserByPhoneNumber(String phoneNumber) {
+        return userRepository.findUserByPhoneNumber(phoneNumber);
     }
 }

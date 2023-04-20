@@ -31,7 +31,7 @@ public class AppUserJDBCDataAccessService implements AppUserDao {
     }
 
     @Override
-    public Optional<AppUser> selectCustomerById(Integer id) {
+    public Optional<AppUser> selectUserById(Integer id) {
 
         return Optional.empty();
     }
@@ -48,10 +48,21 @@ public class AppUserJDBCDataAccessService implements AppUserDao {
                 sql,
                 user.getPhoneNumber(),
                 user.getPassword(),
-                user.getUsername(),
-                LocalDateTime.now(),
-                LocalDateTime.now()
+                user.getUsername()
         );
         System.out.println("jdbcTemplate.update = " + result);
+    }
+
+    @Override
+    public Optional<AppUser> selectUserByPhoneNumber(String phoneNumber) {
+        var sql = """
+                SELECT user_id, phone_number, password, user_name,
+                       registration_time, last_login_time
+                FROM app_user
+                WHERE phone_number = ?
+                """;
+        return jdbcTemplate.query(sql, userRowMapper, phoneNumber)
+                .stream()
+                .findFirst();
     }
 }

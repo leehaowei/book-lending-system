@@ -22,7 +22,7 @@ public class AppUserController {
     }
 
     @GetMapping
-    public List<AppUser> getAllAppUsers() {
+    public List<AppUserDTO> getAllAppUsers() {
 
         return UserService.getAllUsers();
     }
