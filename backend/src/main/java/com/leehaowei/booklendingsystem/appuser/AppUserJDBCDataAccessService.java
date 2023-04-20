@@ -48,7 +48,7 @@ public class AppUserJDBCDataAccessService implements AppUserDao {
                 sql,
                 user.getPhoneNumber(),
                 user.getPassword(),
-                user.getUsername()
+                user.getUserName()
         );
         System.out.println("jdbcTemplate.update = " + result);
     }
