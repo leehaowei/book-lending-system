@@ -1,8 +1,9 @@
 package com.leehaowei.booklendingsystem.inventory;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.leehaowei.booklendingsystem.appuser.AppUserRegistrationRequest;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +22,4 @@ public class InventoryController {
 
         return inventoryService.getAllInventories();
     }
-    // Additional CRUD endpoints
 }

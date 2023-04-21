@@ -21,10 +21,6 @@ public class BookController {
     }
 
     // Additional CRUD endpoints
-    @PostMapping("/api/borrow_book")
-    public void borrowBook(@RequestParam Integer bookId, @RequestParam Integer userId, @RequestParam Date borrowDate) {
-        bookService.borrowBook(bookId, userId, borrowDate);
-    }
 }
 
 

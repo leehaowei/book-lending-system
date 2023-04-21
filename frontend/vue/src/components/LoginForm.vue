@@ -18,14 +18,20 @@
 <script>
 import axios from 'axios';
 import { useRouter } from 'vue-router';
+import BooksList from './BookList.vue';
+import {getAllBooks} from "../auth/auth.js"; // Import the BooksList component
 
 export default {
+  components: {
+    BooksList,
+  },
   data() {
     return {
       user: {
         username: '',
         password: '',
       },
+      books: [], // Add a new data property to store the books
     };
   },
   setup() {
@@ -38,7 +44,10 @@ export default {
         const response = await axios.post('http://localhost:8080/api/auth/login', this.user);
         console.log('User logged in:', response.data);
         if (response.status === 200) {
-          this.router.push('/login-success');
+          localStorage.setItem('jwtToken', response.data.token);
+          const fetchedBooks = await getAllBooks(); // Get the books from the getAllBooks function
+          this.books = fetchedBooks; // Assign the fetched books to the component's data
+          this.router.push('/books');
         }
       } catch (error) {
         console.error('Error logging in user:', error);

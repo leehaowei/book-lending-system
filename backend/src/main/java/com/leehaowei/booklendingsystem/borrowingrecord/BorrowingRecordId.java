@@ -1,5 +1,6 @@
 package com.leehaowei.booklendingsystem.borrowingrecord;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
 import java.io.Serializable;
@@ -8,7 +9,10 @@ import java.util.Objects;
 @Embeddable
 public class BorrowingRecordId implements Serializable {
 
+    @Column(name = "user_id")
     private Integer userId;
+
+    @Column(name = "inventory_id")
     private Integer inventoryId;
 
     // Constructors
@@ -17,6 +21,22 @@ public class BorrowingRecordId implements Serializable {
 
     public BorrowingRecordId(Integer userId, Integer inventoryId) {
         this.userId = userId;
+        this.inventoryId = inventoryId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Integer getInventoryId() {
+        return inventoryId;
+    }
+
+    public void setInventoryId(Integer inventoryId) {
         this.inventoryId = inventoryId;
     }
 
@@ -33,4 +53,5 @@ public class BorrowingRecordId implements Serializable {
         return Objects.hash(userId, inventoryId);
     }
 }
+
 

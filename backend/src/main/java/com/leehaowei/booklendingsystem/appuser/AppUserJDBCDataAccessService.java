@@ -1,5 +1,6 @@
 package com.leehaowei.booklendingsystem.appuser;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -32,9 +33,20 @@ public class AppUserJDBCDataAccessService implements AppUserDao {
 
     @Override
     public Optional<AppUser> selectUserById(Integer id) {
-
-        return Optional.empty();
+        var sql = """
+                SELECT user_id, phone_number, password, user_name,
+                       registration_time, last_login_time
+                FROM app_user
+                WHERE user_id = ?
+                """;
+        try {
+            AppUser user = jdbcTemplate.queryForObject(sql, userRowMapper, id);
+            return Optional.ofNullable(user);
+        } catch (EmptyResultDataAccessException e) {
+            return Optional.empty();
+        }
     }
+
 
     @Override
     public void insertUser(AppUser user) {

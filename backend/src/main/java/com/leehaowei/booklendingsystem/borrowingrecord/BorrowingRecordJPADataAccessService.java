@@ -26,4 +26,9 @@ public class BorrowingRecordJPADataAccessService
         BorrowingRecordId recordId = new BorrowingRecordId(userId, inventoryId);
         return recordRepository.findById(recordId);
     }
+
+    @Override
+    public void insertRecord(BorrowingRecord record) {
+        recordRepository.save(record);
+    }
 }
