@@ -3,6 +3,7 @@ package com.leehaowei.booklendingsystem.inventory;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "inventory")
@@ -32,5 +33,57 @@ public class Inventory {
     private InventoryStatus status;
 
     public Inventory() {
+    }
+
+    public Inventory(Integer inventoryId, String isbn, LocalDateTime storeTime, InventoryStatus status) {
+        this.inventoryId = inventoryId;
+        this.isbn = isbn;
+        this.storeTime = storeTime;
+        this.status = status;
+    }
+
+    public Integer getInventoryId() {
+        return inventoryId;
+    }
+
+    public void setInventoryId(Integer inventoryId) {
+        this.inventoryId = inventoryId;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public LocalDateTime getStoreTime() {
+        return storeTime;
+    }
+
+    public void setStoreTime(LocalDateTime storeTime) {
+        this.storeTime = storeTime;
+    }
+
+    public InventoryStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(InventoryStatus status) {
+        this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Inventory inventory = (Inventory) o;
+        return Objects.equals(inventoryId, inventory.inventoryId) && Objects.equals(isbn, inventory.isbn) && Objects.equals(storeTime, inventory.storeTime) && status == inventory.status;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(inventoryId, isbn, storeTime, status);
     }
 }

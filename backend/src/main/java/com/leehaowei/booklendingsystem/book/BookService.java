@@ -4,12 +4,15 @@ import com.leehaowei.booklendingsystem.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class BookService {
 
     private final BookDao bookDao;
+    private BookRepository bookRepository;
+
 
     public BookService(@Qualifier("jpa-book")BookDao bookDao) {
 
@@ -27,6 +30,9 @@ public class BookService {
                 ));
     }
     // Additional CRUD methods as needed
+    public void borrowBook(Integer bookId, Integer userId, Date borrowDate) {
+        bookRepository.borrowBook(bookId, userId, borrowDate);
+    }
 }
 
 

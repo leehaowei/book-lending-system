@@ -40,7 +40,8 @@ public class SecurityFilterChainConfig {
                 .requestMatchers(
                         HttpMethod.POST,
                         "/api/users",
-                        "/api/auth/login"
+                        "/api/auth/login",
+                        "/api/borrow_book"
                 )
                 .permitAll()
                 .anyRequest()
