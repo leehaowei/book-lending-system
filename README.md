@@ -30,6 +30,10 @@ A full stack book rental system built using Spring Boot, Vue.js, and PostgreSQL.
 ![Book Lending Schema](./book-lending-schema.png)
 
 ## Getting Started
+### Steps
+1. Setup psql with Docker
+2. Run backend: BookLendingSystemApplication
+3. Run frontend
 
 ### Bootstrap the database with Docker
 ```
@@ -44,11 +48,11 @@ make db-down
 ## Backend Development
 ### Current State
 - User registration
-  - via POST request to localhost:8080/api/users
+  - via `POST` request to `localhost:8080/api/users`
   - password is hashed
 - User authentication with JWT token
 - Login
-  - via POST request to localhost:8080/api/auth/login
+  - via `POST` request to `localhost:8080/api/auth/login`
   - Checks username (phone_number) and password
 - Fake Data
   - fake user, book, and inventory data will be generated everytime the application runs 
@@ -76,9 +80,18 @@ npm run dev
   - password: password
 
 ## Note
-1. User table is adjusted to name app_user to avoid reserved word "user" in psql
+1. User table is adjusted to the name app_user to avoid reserved word "user" in psql
 2. Due to time constraints and being new to Spring Security, the project is still in progress.
-- In progress
-  - Create new record based on transaction
-  - Update inventory stats based on transaction
-  - Align inventory, book, and borrowing record data
+- Completed
+  - User registration
+  - User log in validation
+  - Essential JPA Mapping to RDBMS
+- In Progress
+  - Book rental transaction
+    - Create new record based on transaction
+    - Update inventory stats based on transaction
+    - Align inventory, book, and borrowing record data
+  - User details
+    - check duplication
+    - registration and last login time
+  - Tests
