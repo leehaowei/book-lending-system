@@ -33,12 +33,12 @@ A full stack book rental system built using Spring Boot, Vue.js, and PostgreSQL.
 
 ### Bootstrap the database with Docker
 ```
-make bootstrap-db
+make db-up
 ```
 
 ### Remove the database from Docker
 ```
-make down
+make db-down
 ```
 
 ## Backend Development
@@ -50,16 +50,33 @@ make down
 - Login
   - via POST request to localhost:8080/api/auth/login
   - Checks username (phone_number) and password
+- Fake Data
+  - fake user, book, and inventory data will be generated everytime the application runs 
 
 ## Frontend Development
 ### Current State
 - Log-in and register page
-- Redirects to simple HTML page if log-in or register is successful
+  - User will need to log in after successful registered
+  - User will have access to the book list once log in successfully
 - Run the frontend (make sure backend and database on Docker are running)
 ```
 cd frontend/vue
 npm run dev
 ```
 
+## Example
+- Register Info
+  - Phone Number: 0800076666
+  - password: password
+  - User Name: pizza
+- Log in Info
+  - Phone Number: 0800076666
+  - password: password
+
 ## Note
-Due to time constraints and being new to Spring Security, the project is still in progress.
+1. User table is adjusted to name app_user to avoid reserved word "user" in psql
+2. Due to time constraints and being new to Spring Security, the project is still in progress.
+- In progress
+  - Create new record based on transaction
+  - Update inventory stats based on transaction
+  - Align inventory, book, and borrowing record data
