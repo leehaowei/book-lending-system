@@ -52,6 +52,8 @@ make db-down
   - Checks username (phone_number) and password
 - Fake Data
   - fake user, book, and inventory data will be generated everytime the application runs 
+- Entry point of the backend
+  - `book-lending-system/backend/src/main/java/com/leehaowei/booklendingsystem/BookLendingSystemApplication`
 
 ## Frontend Development
 ### Current State
